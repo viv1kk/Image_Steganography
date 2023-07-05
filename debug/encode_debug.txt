@@ -1,0 +1,9 @@
+2023-07-06 00:04:37.493180Total number of Pixels : 250976
+Number of Bits occupied by the Message : 512 bits
+Number of Bits occupied by Message Length : 64 bits
+Total Number of Bits occupied by Message: 576 bits
+Total space Left unused : 250336 bits
+
+
+Encrypted String (AES_CBC) :
+8lNMErw3MdqE6YBejd3TbEgpNTpShlmU4TouCNBpc1vjDpkLO8Yuzbpg/fMfYEPt
