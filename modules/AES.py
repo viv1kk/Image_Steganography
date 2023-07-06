@@ -24,7 +24,7 @@ class AESCipher():
             plain_text = cipher.decrypt(encrypted_text[self.block_size:]).decode("utf-8")
             return self.__unpad(plain_text)
         except ValueError:
-            print("Wrong password")
+            # print("Wrong password")
             return 0
 
     def __pad(self, plain_text):

@@ -66,7 +66,7 @@ def encode_widgets():
                 encoded = Encode(file_path, encryped_message)
                 save_path = filedialog.asksaveasfile(defaultextension=".png",filetypes=[("Image","*.png")])
                 if save_path:
-                    print(save_path)
+                    # print(save_path)
                     encoded.download(save_path.name)
                     lbl_enc_stat.configure(text="Stego Image Generated and Saved!")
                 encoded.debugInfo()
@@ -124,11 +124,11 @@ def decode_widgets():
                 lbl_dec_stat.configure(text="")
 
         def decode_and_decrypt(frame):
+            dec_message.delete(1.0, "end-1c")
             if file_path != "":
                 password = password_text.get()
                 decoded = Decode(file_path)
                 if decoded.secret_encryped_message:
-                    decoded.debugInfo()
                     aes = AESCipher()
                     decrpted_message = aes.decrypt(decoded.secret_encryped_message, password)
                     if decrpted_message:
@@ -140,6 +140,7 @@ def decode_widgets():
                         lbl_dec_stat.configure(text="Decryption Failed! Invalid Password or Image")
                 else:
                     lbl_dec_stat.configure(text="Decryption Failed! Invalid Password or Image")
+                decoded.debugInfo()
             else:
                 lbl_dec_stat.configure(text="Decryption Failed! Invalid Password or Image")
 
