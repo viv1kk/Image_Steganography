@@ -1,6 +1,6 @@
-2023-07-06 19:54:25.628459
-Total number of Pixels : 250976
-Size of message in bits : 352 bits
+2023-07-07 15:38:34.169347
+Total number of Pixels : 677120
+Size of message in bits : 512 bits
 
 Encrypted String (AES_CBC) :
-uXj3C6dq/1+RUwdC6U4VeemjVxqF4Jt+4Nyk2tMqfY8=
+7Yrfj+ndT8ZvyrfkEiEHu8H2Z4vSt7Riad/xlIdebefLmbqSavFNNXmM7u4+8jOD

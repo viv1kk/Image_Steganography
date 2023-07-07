@@ -1,9 +1,13 @@
-2023-07-06 00:04:37.493180Total number of Pixels : 250976
+2023-07-07 15:38:08.980329
+Total number of Pixels : 677120
+Max number of characters can be accomodated : 84640 characters
 Number of Bits occupied by the Message : 512 bits
 Number of Bits occupied by Message Length : 64 bits
 Total Number of Bits occupied by Message: 576 bits
-Total space Left unused : 250336 bits
+Total number of characters + meta accomodated : 72 characters
+Avaliable space : 84568 characters
+Total space Left unused : 676480 bits
 
 
 Encrypted String (AES_CBC) :
-8lNMErw3MdqE6YBejd3TbEgpNTpShlmU4TouCNBpc1vjDpkLO8Yuzbpg/fMfYEPt
+7Yrfj+ndT8ZvyrfkEiEHu8H2Z4vSt7Riad/xlIdebefLmbqSavFNNXmM7u4+8jOD
