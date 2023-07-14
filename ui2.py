@@ -46,7 +46,7 @@ def encode_widgets():
     def form_widgets(frame):
         def open_image():
             global file_path
-            file_path = filedialog.askopenfilename(initialdir="/", title="Open Image", filetypes=(("png files","*.png"), ("all files","*")))
+            file_path = filedialog.askopenfilename(initialdir="/", title="Open Image", filetypes=(("IMG","*.png"), ("IMG","*.jpeg"), ("IMG","*.jpg")))
             if file_path != "":
                 password_text.configure(state=NORMAL)
                 password_text.delete(0, END) 
@@ -112,7 +112,7 @@ def decode_widgets():
     def form_widgets(frame):
         def open_image():
             global file_path
-            file_path = filedialog.askopenfilename(initialdir="/", title="Open Image", filetypes=(("png files","*.png"), ("all files","*")))
+            file_path = filedialog.askopenfilename(initialdir="/", title="Open Image", filetypes=(("IMG","*.png"), ("IMG","*.jpeg"), ("IMG","*.jpg")))
             if file_path != "":
                 password_text.configure(state=NORMAL)
                 password_text.delete(0, END) 
