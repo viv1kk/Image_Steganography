@@ -75,7 +75,7 @@ def encode_widgets():
         password_label = CTkLabel(frame, text="Enter Password : ")
         password_text = CTkEntry(frame, width=200, show="*", state=DISABLED)
         message_label = CTkLabel(frame, text="Enter the Message : ")
-        message_box = CTkTextbox(frame, width=350,height=200, state=DISABLED)
+        message_box = CTkTextbox(frame, width=350,height=200, state=DISABLED, font=("Segoe-UI", 18))
         gen_button = CTkButton(frame, text="Generate Stego Image", state=DISABLED, command=lambda:generateStegoImage(frame))
         lbl_enc_stat = CTkLabel(frame, text="")
 
@@ -151,7 +151,7 @@ def decode_widgets():
         password_text = CTkEntry(frame, width=200, show="*", state=DISABLED)
         gen_button = CTkButton(frame, text="Decrypt and Display Message", state=DISABLED, command=lambda:decode_and_decrypt(frame))
         lbl_dec_stat = CTkLabel(frame, text="")
-        dec_message = CTkTextbox(frame, width=350, height=200, state=DISABLED)
+        dec_message = CTkTextbox(frame, width=350, height=200, state=DISABLED, font=("Segoe-UI", 18))
 
 
         select_img_button.grid(row=0, column=0, columnspan=2, pady=20)

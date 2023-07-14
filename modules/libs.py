@@ -82,14 +82,15 @@ class Encode():
     def debugInfo(self):
         height, width, channel = self.encoded_image.shape
         with open('./debug/encode_debug.txt', 'w') as f:
+            # (8*2) beacuase the characters are unicode (UTF-16) characters and it takes 16 bits to represent it
             f.write(f"{datetime.datetime.now()}\n")
             f.write(f"Total number of Pixels : {height*width}\n")
-            f.write(f"Max number of characters can be accomodated : {(height*width)//8} characters\n")
+            f.write(f"Max number of characters can be accomodated : {(height*width)//(8*2)} characters\n")
             f.write(f"Number of Bits occupied by the Message : {len(self.bin_msg)-RESERVED_BUFFER_FOR_MESSAGE_SIZE} bits\n")
             f.write(f"Number of Bits occupied by Message Length : {RESERVED_BUFFER_FOR_MESSAGE_SIZE} bits\n")
             f.write(f"Total Number of Bits occupied by Message: {len(self.bin_msg)} bits\n")
-            f.write(f"Total number of characters + meta accomodated : {len(self.bin_msg)//8} characters\n")
-            f.write(f"Avaliable space : {((height*width)//8)-(len(self.bin_msg)//8)} characters\n")
+            f.write(f"Total number of characters + meta accomodated : {len(self.bin_msg)//(8*2)} characters\n")
+            f.write(f"Avaliable space : {((height*width)//8)-(len(self.bin_msg)//(8*2))} characters\n")
             f.write(f"Total space Left unused : {(height*width)-(len(self.bin_msg)+RESERVED_BUFFER_FOR_MESSAGE_SIZE)} bits\n\n")
             f.write(f"\n")
             f.write(f"Encrypted String (AES_CBC) :\n{self.message}")
