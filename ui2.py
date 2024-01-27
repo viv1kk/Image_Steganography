@@ -44,6 +44,10 @@ def encode_widgets():
     clear_frame(right_frame)
     # top_frame(app, "Encode")
     def form_widgets(frame):
+
+        # def checkbox_event():
+        #     print("checkbox toggled, current value:", edit_option_endcode.get())
+
         def open_image():
             global file_path
             file_path = filedialog.askopenfilename(initialdir="/", title="Open Image", filetypes=(("IMG","*.png"), ("IMG","*.jpeg"), ("IMG","*.jpg")))
@@ -72,6 +76,11 @@ def encode_widgets():
                 encoded.debugInfo()
 
         select_img_button = CTkButton(frame, text="Open Image", command=open_image)
+
+        ## adding checkbox for update
+        edit_option_endcode = CTkCheckBox(frame, text="Update Existing Image", command=checkbox_event,
+                                    onvalue="on", offvalue="off")
+
         password_label = CTkLabel(frame, text="Enter Password : ")
         password_text = CTkEntry(frame, width=200, show="*", state=DISABLED)
         message_label = CTkLabel(frame, text="Enter the Message : ")
@@ -79,7 +88,10 @@ def encode_widgets():
         gen_button = CTkButton(frame, text="Generate Stego Image", state=DISABLED, command=lambda:generateStegoImage(frame))
         lbl_enc_stat = CTkLabel(frame, text="")
 
-        select_img_button.grid(row=0, column=0, padx=10, columnspan=2, pady=20)
+        select_img_button.grid(row=0, column=0, padx=10, columnspan=1, pady=20)
+
+        edit_option_endcode.grid(row = 0, column = 1, padx=10)
+
         password_label.grid(row=1, column=0, padx=10, pady=10, sticky="E")
         password_text.grid(row=1, column=1, padx=10, pady=10)
         message_label.grid(row=2, column=0, padx=10, sticky="SE", pady=10)
@@ -87,15 +99,41 @@ def encode_widgets():
         gen_button.grid(row=4, column=0, padx=10, columnspan=2, pady=10)
         lbl_enc_stat.grid(row=5, column=0, padx=10,pady=10, columnspan=2)
 
+
+## binding event
+        def getDecodedMessage(self):
+            if edit_option_endcode.get() == 'on':
+                decoded = Decode(file_path)
+                if decoded.secret_encryped_message:
+                    aes = AESCipher()
+                    decrpted_message = aes.decrypt(decoded.secret_encryped_message, password_text.get())
+                    if decrpted_message:
+                        message_box.focus()
+                        message_box.delete(1.0, "end-1c")
+                        message_box.configure(state=NORMAL)
+                        message_box.insert("0.0", decrpted_message)
+                        decoding_message.configure(text = "Message decoded Successfully")
+                        # print(f"Hidden Message: {decrpted_message}")
+                    else:
+                        decoding_message.configure(text = "Error! Check Password or Image")
+                        # print("Error! Check Password or Image")
+                else:
+                    decoding_message.configure(text = "Error, The Image is not Valid!")
+                    # print("Error, The Image is not Valid!")
+            else: message_box.focus()
+        password_text.bind('<Return>', command=getDecodedMessage)
+        
+
     app.enc_file = '.\\image\\imageico.jpg'
     def img_widgets(frame):
-        global img_label, img_path, img_btn
+        global img_label, img_path, decoding_message
         img_label = CTkLabel(frame, image=getImage(app.enc_file), text="", width= 400, height=400)
         img_path = CTkLabel(frame, text="")
+        decoding_message = CTkLabel(frame, text="")
 
         img_label.grid(row=0,column=0, padx=10, pady=10)
         img_path.grid(row=1, column=0, pady=10, padx=10)
-        
+        decoding_message.grid(row=2, column=0, pady=10, padx=10)
 
     left_frame.grid(row=1, column=0, padx=10, pady=10, sticky=(N,S,E,W))
     form_widgets(left_frame)
@@ -127,7 +165,7 @@ def decode_widgets():
             dec_message.delete(1.0, "end-1c")
             if file_path != "":
                 password = password_text.get()
-                decoded = Decode(file_path)
+                decoded = Decode(img_path)
                 if decoded.secret_encryped_message:
                     aes = AESCipher()
                     decrpted_message = aes.decrypt(decoded.secret_encryped_message, password)
