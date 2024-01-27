@@ -4,7 +4,7 @@
 For Windows :
 - Download this Repository.
 - Open Command Prompt and navigate to the downloaded folder.
-- Create a virtual environment.  ```$virtualenv venv```
+- Create a virtual environment.  ```$python -m venv venv```
 - Activate the virtual environment. ```$activate.bat```
 - Download the necessary Libraries. ```$pip install -r requirements.txt```
 
