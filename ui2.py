@@ -45,8 +45,8 @@ def encode_widgets():
     # top_frame(app, "Encode")
     def form_widgets(frame):
 
-        # def checkbox_event():
-        #     print("checkbox toggled, current value:", edit_option_endcode.get())
+        def checkbox_event():
+            print("checkbox toggled, current value:", edit_option_endcode.get())
 
         def open_image():
             global file_path
