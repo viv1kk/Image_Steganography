@@ -165,7 +165,7 @@ def decode_widgets():
             dec_message.delete(1.0, "end-1c")
             if file_path != "":
                 password = password_text.get()
-                decoded = Decode(img_path)
+                decoded = Decode(file_path)
                 if decoded.secret_encryped_message:
                     aes = AESCipher()
                     decrpted_message = aes.decrypt(decoded.secret_encryped_message, password)
